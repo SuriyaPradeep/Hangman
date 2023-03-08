@@ -9,12 +9,13 @@ print(logo+"\n\n")
 word_list=hangman_words.word_list
 chosen_word = random.choice(word_list)
 word_length = len(chosen_word)
+words_guessed=[]
 #Assigning no lives
 end_of_game = False
 lives = 6
 
 #Testing code
-#print(f'Pssst, the solution is {chosen_word}.')
+print(f'Pssst, the solution is {chosen_word}.')
 
 #Creating blanks
 display = []
@@ -23,11 +24,11 @@ for _ in range(word_length):
   
 while not end_of_game:
   guess = input("Guess a letter: ").lower()
-  
   #To check weather the user is guessing the same letter again
-  if guess in display:
+  if guess in words_guessed:
     print("You have already guessed this letter\n")
     continue
+  words_guessed+=guess
 
   #Check guessed letter
   for position in range(word_length):
